@@ -6,7 +6,7 @@ def checkUser():
     while True:
         login = askUser()
         if checkUpper(login) and checkSpace and checkSpecial(login) and checkLenght(login):
-            return True
+            break
         else:
             print("O usuário não satisfaz as requisições de login.\nVocê deve conter a primeira letra maiúscula, nenhum caracter especial e menos de 30 caracteres ao todo.")
     
@@ -14,7 +14,7 @@ def checkPassword():
     while True:
         psw = askPassword()
         if checkLenghtPsw(psw) and checkSpecialPsw(psw) and checkNumberPsw(psw) and checkUpperPsw(psw) and checkLowerPsw(psw):
-            return True
+            break
         else:
             print("As requisições de senha não foram satisfeitas.\nVocê deve conter ao menos uma letra maiúscula, uma minúscula, um caracter especial, um número e mais de 10 caracteres.")
 
