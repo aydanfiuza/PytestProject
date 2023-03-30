@@ -1,48 +1,80 @@
-from cryptographyFramework import *
-
 def askUser():
     login = input("Informe seu usuário: ")
-    loginOkay = checkUser(login)
-    if loginOkay != "...":
-        print("Usuário válido.")
+    return login
 
-def checkUser(login):
+def checkUpper(login):
     if not login[0].isupper():
-        print("O usuário deve conter a primeira letra maiúscula.")
-        return "..."
-    elif any(not c.isalnum() for c in login):
-        print("O usuário não pode conter caracteres especiais.")
-        return "..."
-    elif len(login) > 30:
-        print("O usuário deve conter menos de 30 caracteres.")
-        return "..."
+        return False
     else:
-        return login
+        return True
+    
+def checkSpace(login):
+    if " " in login:
+        return False
+    else:
+        return True
+
+def checkSpecial(login):
+    if any(not c.isalnum() for c in login):
+        return False
+    else:
+        return True
+
+def checkLenght(login):
+    if len(login) > 30:
+        return False
+    else:
+        return True
+    
+def checkUser():
+    while True:
+        login = askUser()
+        if checkUpper(login) and checkSpace and checkSpecial(login) and checkLenght(login):
+            return login
+        else:
+            print("O usuário não satisfaz as requisições de login.\nVocê deve conter a primeira letra maiúscula, nenhum caracter especial e menos de 30 caracteres ao todo.")
     
 def askPassword():
     psw = input("Informe sua senha: ")
-    pswOkay = checkPassword(psw)
-    if pswOkay != "..":
-        print("Senha válida.")
+    return psw
 
-def checkPassword(psw):
+def checkLenghtPsw(psw):
     if len(psw) < 10:
-        print("A senha deve ter no mínimo 10 caracteres.")
-        return ".."
-    elif not any(not c.isalnum() for c in psw):
-        print("A senha deve conter ao menos um caracter especial.")
-        return ".."
-    elif not any(i.isdigit() for i in psw):
-        print("A senha deve conter ao menos um número.")
-        return ".."
-    elif not any(char.isupper() for char in psw):
-        print("A senha deve conter ao menos uma letra maiúscula.")
-        return ".."
-    elif not any(char.islower() for char in psw):
-        print("A senha deve conter ao menos uma letra minúscula.")
-        return ".."
+        return False
     else:
-        return psw
+        return True
+
+def checkSpecialPsw(psw):
+    if not any(not c.isalnum() for c in psw):
+        return False
+    else: 
+        return True
+    
+def checkNumberPsw(psw):
+    if not any(i.isdigit() for i in psw):
+        return False
+    else:
+        return True
+
+def checkUpperPsw(psw):
+    if not any(char.isupper() for char in psw):
+        return False
+    else:
+        return True
+
+def checkLowerPsw(psw):
+    if not any(char.islower() for char in psw):
+        return False
+    else:
+        return True
+    
+def checkPassword():
+    while True:
+        psw = askPassword()
+        if checkLenghtPsw(psw) and checkSpecialPsw(psw) and checkNumberPsw(psw) and checkUpperPsw(psw) and checkLowerPsw(psw):
+            return psw
+        else:
+            print("As requisições de senha não foram satisfeitas.\nVocê deve conter ao menos uma letra maiúscula, uma minúscula, um caracter especial, um número e mais de 10 caracteres.")    
     
 def askMessage():
     message = input("Informe a mensagem a ser criptografada: ")
@@ -57,7 +89,7 @@ def checkMessage(message):
     else:
         return message
 
-askUser()
-askPassword()
-askMessage()
-
+login = checkUser()
+print("Usuário válido.")
+psw = checkPassword()
+print("Senha válida.")
