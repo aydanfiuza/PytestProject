@@ -6,7 +6,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 
 def initializeWrite():
-    try: 
+    try:
         os.remove("message.txt")
     except Exception:
         pass    
@@ -47,4 +47,4 @@ def _getKey(user, password):
         iterations=100000,
     )
     key = base64.urlsafe_b64encode(kdf.derive(password))
-    return Fernet(key)    
+    return Fernet(key)
