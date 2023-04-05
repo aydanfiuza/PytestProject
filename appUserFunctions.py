@@ -7,7 +7,7 @@ def checkUpper(login):
         return False
     else:
         return True
-    
+        
 def checkSpace(login):
     if " " in login:
         return False

@@ -15,19 +15,19 @@ def checkSpecialPsw(psw):
         return True
     
 def checkNumberPsw(psw):
-    if not any(i.isdigit() for i in psw):
-        return False
-    else:
+    if any(i.isdigit() for i in psw):
         return True
+    else:
+        return False
 
 def checkUpperPsw(psw):
-    if not any(char.isupper() for char in psw):
-        return False
-    else:
+    if any(char.isupper() for char in psw):
         return True
+    else:
+        return False
 
 def checkLowerPsw(psw):
-    if not any(char.islower() for char in psw):
-        return False
-    else:
+    if any(char.islower() for char in psw):
         return True
+    else:
+        return False
