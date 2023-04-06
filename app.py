@@ -1,7 +1,8 @@
 from appUserFunctions import *
 from appPasswordFunctions import *
 from appMessageFunctions import *
-    
+from cryptographyFramework import *    
+   
 def checkUser():
     while True:
         login = askUser()
@@ -33,3 +34,10 @@ psw = checkPassword()
 print("Senha válida.")
 message = checkMessage()
 print("Sua mensagem foi armazenada e criptografada com sucesso.")
+
+initializeWrite()
+encryptedText = encryptMessage(login, psw, message)
+saveNewLine(encryptedText)
+initializeRead()
+line1 = readNextLine()
+print(line1)
